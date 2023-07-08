@@ -1,13 +1,16 @@
 package com.example.sensorcapture;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +20,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        LinearLayout ll = new LinearLayout(this) ;
-//        ll.setBackgroundColor(Color.WHITE);
         setContentView(R.layout.activity_main);
+        LinearLayout li=(LinearLayout)findViewById(R.id.main_linear);
+        li.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
         SensorManager sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensor_manager != null)
@@ -40,7 +43,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Toast.makeText(this, "Sensors not available", Toast.LENGTH_SHORT).show();
         }
 
+        CardView light = (CardView)findViewById(R.id.light_card);
+
+        light.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent go_to_light_db = new Intent(MainActivity.this, light_sensor_chart.class);
+                startActivity(go_to_light_db);
+                finish();
+            }
+        });
+
     }
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {
