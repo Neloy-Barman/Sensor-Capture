@@ -1,7 +1,6 @@
 package com.example.sensorcapture;
 
 public class Queries {
-
     public static String x_value = "time";
     public static String y_value = "sensor_value";
 

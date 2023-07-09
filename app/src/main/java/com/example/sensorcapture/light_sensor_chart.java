@@ -34,80 +34,66 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         setContentView(R.layout.activity_light_sensor_chart);
 
         chart = (LineChart) findViewById(R.id.getTheGraph);
-
         chart.setOnChartValueSelectedListener(this);
-//        setLineChartData(chart);
-        // enable description text
-//        chart.getDescription().setEnabled(true);
-//
-//        Description description = new Description();
-//        description.setText("");
-//        chart.setDescription(description);
-//
-//        chart.setNoDataText("No data for the moment.");
-//
-//        chart.setHighlightPerTapEnabled(true);
-//
-//        // disable touch gestures
-//        chart.setTouchEnabled(true);
-//
-//        // disable scaling and dragging
-//        chart.setDragEnabled(false);
-//        chart.setScaleEnabled(false);
-//        chart.setDrawGridBackground(false);
-//
-//        chart.setPinchZoom(false);
-//
-//        // set an alternative background color
-//        chart.setBackgroundColor(Color.LTGRAY);
-//
-//        LineData data = new LineData();
-//        data.setValueTextColor(Color.WHITE);
-//
-//        // add empty data
-//        chart.setData(data);
-//
-//        XAxis xl = chart.getXAxis();
-//        xl.setTextColor(Color.WHITE);
-//        xl.setDrawGridLines(false);
-//        xl.setAvoidFirstLastClipping(true);
-//        xl.setEnabled(true);
-//
-//        YAxis leftAxis = chart.getAxisLeft();
-//        leftAxis.setTextColor(Color.WHITE);
-//        leftAxis.setAxisMaximum(100f);
-//        leftAxis.setAxisMinimum(0f);
-//        leftAxis.setDrawGridLines(true);
-//
-//        YAxis rightAxis = chart.getAxisRight();
-//        rightAxis.setEnabled(false);
-//        sensorDB = new SensorDB(this);
-//        sqLiteDatabase = sensorDB.getWritableDatabase();
+        chart = setparams(chart);
+
+
         ArrayList<Entry> data = new ArrayList<Entry>();
         data = getIntent().getParcelableArrayListExtra("Light_table_values");
-        for(int j=0;j<data.size();j++)
-        {
-            Log.d("Normal", "I'm running from light_sensor_chart");
-            String s = String.format("%s", data.get(j));
-            Log.d("From table", s);
-        }
+//        for(int j=0;j<data.size();j++)
+//        {
+//            Log.d("Normal", "I'm running from light_sensor_chart");
+//            String s = String.format("%s", data.get(j));
+//            Log.d("From table", s);
+//        }
         ArrayList<Entry> entries = new ArrayList<>();
         for(int i=0;i<data.size();i++)
         {
             entries.add(new Entry(data.get(i).getX(),data.get(i).getY()));
         }
-////        entries.add(new Entry(20f, 0.0f));
-////        entries.add(new Entry(30f, 3.0F));
-////        entries.add(new Entry(40f, 2.0F));
-////        entries.add(new Entry(50f, 1.0F));
-////        entries.add(new Entry(60f, 8.0F));
-//
+
         LineDataSet dataSet= new LineDataSet(entries, "Time series");
         LineData chart_data = new LineData(dataSet);
         chart.setData(chart_data);
 
     }
 
+    public LineChart setparams(LineChart chart)
+    {
+        chart.getDescription().setEnabled(false);
+        chart.setNoDataText("No data at this moment.");
+        chart.setHighlightPerTapEnabled(false);
+        // disable touch gestures
+        chart.setTouchEnabled(false);
+       // disable scaling and dragging
+        chart.setDragEnabled(false);
+        chart.setScaleEnabled(false);
+        chart.setDrawGridBackground(false);
+        chart.setPinchZoom(false);
+        // set an alternative background color
+        chart.setBackgroundColor(Color.WHITE);
+
+        XAxis xl = chart.getXAxis();
+        xl.setTextColor(Color.rgb(255,0,0));
+        xl.setDrawGridLines(false);
+        xl.setAvoidFirstLastClipping(true);
+        xl.setEnabled(true);
+
+        YAxis leftAxis = chart.getAxisLeft();
+        leftAxis.setTextColor(Color.rgb(0,255,0));
+        leftAxis.setAxisMaximum(100f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setDrawGridLines(true);
+
+        YAxis rightAxis = chart.getAxisRight();
+        rightAxis.setEnabled(false);
+        return chart;
+    }
+//            entries.add(new Entry(20f, 0.0f));
+////        entries.add(new Entry(30f, 3.0F));
+////        entries.add(new Entry(40f, 2.0F));
+////        entries.add(new Entry(50f, 1.0F));
+////        entries.add(new Entry(60f, 8.0F));
 //    public void getDataValues(){
 //        ArrayList<Entry> dataVals = new ArrayList<>();
 //        String[] columns = {"x_values", "y_values"};
