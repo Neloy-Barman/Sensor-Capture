@@ -2,6 +2,8 @@ package com.example.sensorcapture;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +26,8 @@ import java.util.Map;
 public class light_sensor_chart extends AppCompatActivity implements OnChartValueSelectedListener {
 
     private LineChart chart;
+    SensorDB sensorDB;
+    SQLiteDatabase sqLiteDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,125 +38,167 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         chart.setOnChartValueSelectedListener(this);
 //        setLineChartData(chart);
         // enable description text
-        chart.getDescription().setEnabled(true);
-
-        Description description = new Description();
-        description.setText("");
-        chart.setDescription(description);
-
-        chart.setNoDataText("No data for the moment.");
-
-        chart.setHighlightPerTapEnabled(true);
-
-        // disable touch gestures
-        chart.setTouchEnabled(true);
-
-        // disable scaling and dragging
-        chart.setDragEnabled(false);
-        chart.setScaleEnabled(false);
-        chart.setDrawGridBackground(false);
-
-        chart.setPinchZoom(false);
-
-        // set an alternative background color
-        chart.setBackgroundColor(Color.LTGRAY);
-
-        LineData data = new LineData();
-        data.setValueTextColor(Color.WHITE);
-
-        // add empty data
-        chart.setData(data);
-
-        XAxis xl = chart.getXAxis();
-        xl.setTextColor(Color.WHITE);
-        xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
-        xl.setEnabled(true);
-
-        YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMaximum(100f);
-        leftAxis.setAxisMinimum(0f);
-        leftAxis.setDrawGridLines(true);
-
-        YAxis rightAxis = chart.getAxisRight();
-        rightAxis.setEnabled(false);
-    }
-
-    private void addEntry() {
-
-        LineData data = chart.getData();
-
-        if (data != null) {
-
-            ILineDataSet set = data.getDataSetByIndex(0);
-            // set.addEntry(...); // can be called as well
-
-            if (set == null) {
-                set = createSet();
-                data.addDataSet(set);
-            }
-
-            data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
-            data.notifyDataChanged();
-
-            // let the chart know it's data has changed
-            chart.notifyDataSetChanged();
-
-            // limit the number of visible entries
-            chart.setVisibleXRange(6, 120);
-//             chart.setVisibleYRange(30, AxisDependency.LEFT);
-
-            // move to the latest entry
-            chart.moveViewToX(data.getEntryCount()-7);
-
-            // this automatically refreshes the chart (calls invalidate())
-//             chart.moveViewTo(data.getXValCount()-7, 55f,
-//             YAxis.AxisDependency.LEFT);
+//        chart.getDescription().setEnabled(true);
+//
+//        Description description = new Description();
+//        description.setText("");
+//        chart.setDescription(description);
+//
+//        chart.setNoDataText("No data for the moment.");
+//
+//        chart.setHighlightPerTapEnabled(true);
+//
+//        // disable touch gestures
+//        chart.setTouchEnabled(true);
+//
+//        // disable scaling and dragging
+//        chart.setDragEnabled(false);
+//        chart.setScaleEnabled(false);
+//        chart.setDrawGridBackground(false);
+//
+//        chart.setPinchZoom(false);
+//
+//        // set an alternative background color
+//        chart.setBackgroundColor(Color.LTGRAY);
+//
+//        LineData data = new LineData();
+//        data.setValueTextColor(Color.WHITE);
+//
+//        // add empty data
+//        chart.setData(data);
+//
+//        XAxis xl = chart.getXAxis();
+//        xl.setTextColor(Color.WHITE);
+//        xl.setDrawGridLines(false);
+//        xl.setAvoidFirstLastClipping(true);
+//        xl.setEnabled(true);
+//
+//        YAxis leftAxis = chart.getAxisLeft();
+//        leftAxis.setTextColor(Color.WHITE);
+//        leftAxis.setAxisMaximum(100f);
+//        leftAxis.setAxisMinimum(0f);
+//        leftAxis.setDrawGridLines(true);
+//
+//        YAxis rightAxis = chart.getAxisRight();
+//        rightAxis.setEnabled(false);
+//        sensorDB = new SensorDB(this);
+//        sqLiteDatabase = sensorDB.getWritableDatabase();
+        ArrayList<Entry> data = new ArrayList<Entry>();
+        data = getIntent().getParcelableArrayListExtra("Light_table_values");
+        for(int j=0;j<data.size();j++)
+        {
+            Log.d("Normal", "I'm running from light_sensor_chart");
+            String s = String.format("%s", data.get(j));
+            Log.d("From table", s);
         }
+        ArrayList<Entry> entries = new ArrayList<>();
+        for(int i=0;i<data.size();i++)
+        {
+            entries.add(new Entry(data.get(i).getX(),data.get(i).getY()));
+        }
+////        entries.add(new Entry(20f, 0.0f));
+////        entries.add(new Entry(30f, 3.0F));
+////        entries.add(new Entry(40f, 2.0F));
+////        entries.add(new Entry(50f, 1.0F));
+////        entries.add(new Entry(60f, 8.0F));
+//
+        LineDataSet dataSet= new LineDataSet(entries, "Time series");
+        LineData chart_data = new LineData(dataSet);
+        chart.setData(chart_data);
+
     }
 
-    @Override
-    protected void onResume() {
+//    public void getDataValues(){
+//        ArrayList<Entry> dataVals = new ArrayList<>();
+//        String[] columns = {"x_values", "y_values"};
+//        Cursor cursor = sqLiteDatabase.query("mytable", columns, null, null, null, null, null);
+//        for(int i=0;i<cursor.getCount();i++)
+//        {
+//            cursor.moveToNext();
+//            dataVals.add(new Entry(cursor.getFloat(0), cursor.getFloat(1)));
+//        }
+//        Log.d("Normal", "I'm running from light_sensor_chart");
+//        for (int j=0;j<dataVals.size();j++)
+//        {
+//            String s = String.format("%s", dataVals.get(j));
+//            Log.d("From table", s);
+//        }
+//    }
 
-        super.onResume();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for(int i=0;i<120;i++)
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            addEntry();
-                        }
-                    });
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-//                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        }).start();
-    }
+//    private void addEntry() {
+//
+//        LineData data = chart.getData();
+//
+//        if (data != null) {
+//
+//            ILineDataSet set = data.getDataSetByIndex(0);
+//            // set.addEntry(...); // can be called as well
+//
+//            if (set == null) {
+//                set = createSet();
+//                data.addDataSet(set);
+//            }
+//
+//            data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
+//            data.notifyDataChanged();
+//
+//            // let the chart know it's data has changed
+//            chart.notifyDataSetChanged();
+//
+//            // limit the number of visible entries
+//            chart.setVisibleXRange(6, 120);
+////             chart.setVisibleYRange(30, AxisDependency.LEFT);
+//
+//            // move to the latest entry
+//            chart.moveViewToX(data.getEntryCount()-7);
+//
+//            // this automatically refreshes the chart (calls invalidate())
+////             chart.moveViewTo(data.getXValCount()-7, 55f,
+////             YAxis.AxisDependency.LEFT);
+//        }
+//    }
 
-    private LineDataSet createSet() {
+//    @Override
+//    protected void onResume() {
+//
+//        super.onResume();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                for(int i=0;i<120;i++)
+//                {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            addEntry();
+//                        }
+//                    });
+//                    try {
+//                        Thread.sleep(5000);
+//                    } catch (InterruptedException e) {
+////                        throw new RuntimeException(e);
+//                    }
+//                }
+//            }
+//        }).start();
+//    }
 
-        LineDataSet set = new LineDataSet(null, "Dynamic Data");
-        set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setColor(ColorTemplate.getHoloBlue());
-        set.setCircleColor(Color.WHITE);
-        set.setLineWidth(2f);
-        set.setCircleRadius(4f);
-        set.setFillAlpha(65);
-        set.setFillColor(ColorTemplate.getHoloBlue());
-        set.setHighLightColor(Color.rgb(244, 117, 117));
-        set.setValueTextColor(Color.WHITE);
-        set.setValueTextSize(9f);
-        set.setDrawValues(false);
-        return set;
-    }
+//    private LineDataSet createSet() {
+//
+//        LineDataSet set = new LineDataSet(null, "Dynamic Data");
+//        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        set.setColor(ColorTemplate.getHoloBlue());
+//        set.setCircleColor(Color.WHITE);
+//        set.setLineWidth(2f);
+//        set.setCircleRadius(4f);
+//        set.setFillAlpha(65);
+//        set.setFillColor(ColorTemplate.getHoloBlue());
+//        set.setHighLightColor(Color.rgb(244, 117, 117));
+//        set.setValueTextColor(Color.WHITE);
+//        set.setValueTextSize(9f);
+//        set.setDrawValues(false);
+//        return set;
+//    }
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
@@ -166,16 +212,26 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
 
 //    public void setLineChartData(LineChart chart){
 //        ArrayList<Entry> entries = new ArrayList<>();
-//        entries.add(new Entry(20f, 0.0f));
-//        entries.add(new Entry(30f, 3.0F));
-//        entries.add(new Entry(40f, 2.0F));
-//        entries.add(new Entry(50f, 1.0F));
-//        entries.add(new Entry(60f, 8.0F));
+//        String[] columns = {"x_values", "y_values"};
+//        Cursor cursor = sqLiteDatabase.query("mytable", columns, null, null, null, null, null);
+//        for(int i=0;i<cursor.getCount();i++)
+//        {
+//            cursor.moveToNext();
+//            entries.add(new Entry(cursor.getFloat(0), cursor.getFloat(1)));
+//        }
+////        entries.add(new Entry(20f, 0.0f));
+////        entries.add(new Entry(30f, 3.0F));
+////        entries.add(new Entry(40f, 2.0F));
+////        entries.add(new Entry(50f, 1.0F));
+////        entries.add(new Entry(60f, 8.0F));
 //
 //        LineDataSet dataSet= new LineDataSet(entries, "Time series");
 //        LineData data = new LineData(dataSet);
 //        chart.setData(data);
 //    }
+
+
+
 //    @Override
 //    protected void onPause() {
 //        super.onPause();

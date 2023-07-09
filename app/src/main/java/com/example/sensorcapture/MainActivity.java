@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LinearLayout li=(LinearLayout)findViewById(R.id.main_linear);
-        li.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//        LinearLayout li=(LinearLayout)findViewById(R.id.main_linear);
+//        li.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
         SensorManager sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensor_manager != null)
@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View v) {
                 Intent go_to_light_db = new Intent(MainActivity.this, light_sensor_chart.class);
+//                go_to_light_db.putParcelableArrayListExtra()
+                go_to_light_db.putParcelableArrayListExtra("Light_table_values", sensorDB.retrieveTable(Queries.light));
                 startActivity(go_to_light_db);
                 finish();
             }
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
     long time = System.currentTimeMillis();
     long time_1 = time;
-    float t = 1;
+    float t = 10;
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_LIGHT)
@@ -85,15 +87,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             if(elapesed_time >= 5000){
                 Log.d("My time", String.format("Time elapsed for light sensor %s", elapesed_time));
                 time_1 = time;
-
-                sensorDB.insertData(event.values[0], t);
-                t++;
-                getDataValues();
+                sensorDB.insertData(Queries.light, t, event.values[0]);
+                 t = t+10;
+//                getDataValues();
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_PROXIMITY)
         {
             ((TextView)findViewById(R.id.proximity_sensor)).setText(String.format("%s", event.values[0]));
+//            sensorDB.insertData(Queries.proximity, event.values[0],time/1000);
         }
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
         {
@@ -105,21 +107,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    public void getDataValues(){
-        ArrayList<Entry> dataVals = new ArrayList<>();
-        String[] columns = {"x_values", "y_values"};
-        Cursor cursor = sqLiteDatabase.query("mytable", columns, null, null, null, null, null);
-        for(int i=0;i<cursor.getCount();i++)
-        {
-            cursor.moveToNext();
-            dataVals.add(new Entry(cursor.getFloat(0), cursor.getFloat(1)));
-        }
-        for (int j=0;j<dataVals.size();j++)
-        {
-            String s = String.format("%s", dataVals.get(j));
-            Log.d("From table", s);
-        }
-    }
+//    public void getDataValues(){
+//        ArrayList<Entry> dataVals = new ArrayList<>();
+//        String[] columns = {"x_values", "y_values"};
+//        Cursor cursor = sqLiteDatabase.query("mytable", columns, null, null, null, null, null);
+//        for(int i=0;i<cursor.getCount();i++)
+//        {
+//            cursor.moveToNext();
+//            dataVals.add(new Entry(cursor.getFloat(0), cursor.getFloat(1)));
+//        }
+//        for (int j=0;j<dataVals.size();j++)
+//        {
+//            String s = String.format("%s", dataVals.get(j));
+//            Log.d("From table", s);
+//        }
+//    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
