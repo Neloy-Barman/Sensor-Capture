@@ -12,20 +12,24 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Mine"
+        android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".activity_gyroscope"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".activity_accelerometer"
-            android:exported="false" />
+            android:exported="false"
+           />
         <activity
             android:name=".activity_proximity_senor_chart"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".light_sensor_chart"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

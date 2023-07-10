@@ -38,27 +38,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        moveTaskToBack(true);
-
-//        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.linked_in, null);
-//
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.0)
-//        {
-//
-//        }
-//        Notification notification = builder
-//                .setSmallIcon(R.drawable.linked_in)
-//                .setContentTitle("Fuck you")
-//                .setContentText("FUCCCCCCCCCCCCC")
-//                .setSubText("fasdfasfasfas")
-//                .setChannelId(channel_id)
-//                .setPriority(NotificationCompat.PRIORITY_HIGH)
-//                .build();
-//        NotificationManager notificationManager = (NotificationManager) this.getSystemService(this.NOTIFICATION_SERVICE);
-//        notificationManager.notify(1, notification);
-//        createNotification();
-
         SensorManager sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensor_manager != null)
         {
@@ -90,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View v) {
                 Intent go_to_light_db = new Intent(MainActivity.this, light_sensor_chart.class);
-//                go_to_light_db.putParcelableArrayListExtra()
                 go_to_light_db.putParcelableArrayListExtra("Light_table_values", sensorDB.retrieveTable(Queries.light));
                 startActivity(go_to_light_db);
                 finish();
@@ -228,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     .setChannelId(channel_id)
                     .setStyle(full_noti)
                     .build();
-            nm.createNotificationChannel(new NotificationChannel(channel_id, "New channel", NotificationManager.IMPORTANCE_HIGH));
+            nm.createNotificationChannel(new NotificationChannel(channel_id, "New channel", NotificationManager.IMPORTANCE_DEFAULT));
         }
         else{
             notification = new Notification.Builder(this)
@@ -241,22 +219,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         nm.notify(notification_id, notification);
     }
-
-//    public void getDataValues(){
-//        ArrayList<Entry> dataVals = new ArrayList<>();
-//        String[] columns = {"x_values", "y_values"};
-//        Cursor cursor = sqLiteDatabase.query("mytable", columns, null, null, null, null, null);
-//        for(int i=0;i<cursor.getCount();i++)
-//        {
-//            cursor.moveToNext();
-//            dataVals.add(new Entry(cursor.getFloat(0), cursor.getFloat(1)));
-//        }
-//        for (int j=0;j<dataVals.size();j++)
-//        {
-//            String s = String.format("%s", dataVals.get(j));
-//            Log.d("From table", s);
-//        }
-//    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {

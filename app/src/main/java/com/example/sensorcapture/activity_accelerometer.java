@@ -1,18 +1,20 @@
 package com.example.sensorcapture;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Insets;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Size;
 import android.view.Display;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowMetrics;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -35,14 +37,29 @@ public class activity_accelerometer extends AppCompatActivity implements OnChart
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accelerometer);
 
-        Display display = getWindowManager().getDefaultDisplay();
-        int height = display.getHeight();
-        int width = display.getWidth();
+//        Display display = getWindowManager().getDefaultDisplay();
+//        int height = display.getHeight();
+//        int width = display.getWidth();
+//
+//        acc = (LinearLayout) findViewById(R.id.acc_lin);
+//        ViewGroup.LayoutParams params = acc.getLayoutParams();
+//        params.height = height;
+//        params.width = width;
 
-        acc = (LinearLayout) findViewById(R.id.acc_lin);
-        ViewGroup.LayoutParams params = acc.getLayoutParams();
-        params.height = height;
-        params.width = width;
+        Toolbar toolbar = findViewById(R.id.acc_toolbar);
+        AppCompatActivity appCompatActivity = activity_accelerometer.this;
+        appCompatActivity.setSupportActionBar(toolbar);
+        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        appCompatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent main = new Intent(activity_accelerometer.this, MainActivity.class);
+                startActivity(main);
+                finish();
+            }
+        });
 
 
         chart_x = (LineChart) findViewById(R.id.acc_x);
