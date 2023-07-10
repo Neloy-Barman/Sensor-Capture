@@ -2,37 +2,62 @@ package com.example.sensorcapture;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.res.ResourcesCompat;
 
-import android.content.Entity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.github.mikephil.charting.data.Entry;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     SensorDB sensorDB;
     SQLiteDatabase sqLiteDatabase;
+    private static final String channel_id = "Sensor Capture";
+    private static final int notification_id = 100;
+
+    public static String lil, proxi, acce, gyro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        moveTaskToBack(true);
+
+//        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.linked_in, null);
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.0)
+//        {
+//
+//        }
+//        Notification notification = builder
+//                .setSmallIcon(R.drawable.linked_in)
+//                .setContentTitle("Fuck you")
+//                .setContentText("FUCCCCCCCCCCCCC")
+//                .setSubText("fasdfasfasfas")
+//                .setChannelId(channel_id)
+//                .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                .build();
+//        NotificationManager notificationManager = (NotificationManager) this.getSystemService(this.NOTIFICATION_SERVICE);
+//        notificationManager.notify(1, notification);
+//        createNotification();
 
         SensorManager sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensor_manager != null)
@@ -123,19 +148,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if(event.sensor.getType() == Sensor.TYPE_LIGHT)
         {
             ((TextView)findViewById(R.id.light_sensor)).setText(String.format("%s", event.values[0]));
+            lil = ((TextView)findViewById(R.id.light_sensor)).getText().toString();
+            createNotification();
             time_l = System.currentTimeMillis();
             long elapesed_time = time_l-time_l_p;
-            if(elapesed_time >= 60000){
+            if(elapesed_time >= 60000.00){
                 Log.d("My time", String.format("Time elapsed for light sensor %s", elapesed_time));
                 time_l_p = time_l;
                 sensorDB.insertData(Queries.light, t_l, event.values[0]);
-                 t_l = (elapesed_time / 60000) + 1F;
+                 t_l = (float) ((elapesed_time / 60000.00) + 1F);
 //                getDataValues();
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_PROXIMITY)
         {
             ((TextView)findViewById(R.id.proximity_sensor)).setText(String.format("%s", event.values[0]));
+            proxi =  ((TextView)findViewById(R.id.proximity_sensor)).getText().toString();
+            createNotification();
             time_p = System.currentTimeMillis();
             if(time_p-time_p_p >= 60000){
                 Log.d("My time", String.format("Time elapsed for proximity sensor %s", time_p-time_p_p));
@@ -148,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         {
             ((TextView)findViewById(R.id.accelerometer)).setText(String.format("Ax: %s\nAy: %s\nAz: %s", event.values[0], event.values[1], event.values[2]));
             time_a = System.currentTimeMillis();
+            acce = ((TextView)findViewById((R.id.accelerometer))).getText().toString();
+            createNotification();
             if(time_a-time_a_p >= 60000){
                 Log.d("My time", String.format("Time elapsed for accelerometer  %s", time_a-time_a_p));
                 time_a_p = time_a;
@@ -161,6 +192,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         {
             ((TextView)findViewById(R.id.gyroscope)).setText(String.format("Gx: %s\nGy: %s\nGz: %s", event.values[0],event.values[1], event.values[2]));
             time_g = System.currentTimeMillis();
+            gyro = ((TextView)findViewById(R.id.gyroscope)).getText().toString();
+            createNotification();
             if(time_g-time_g_p >= 60000){
                 Log.d("My time", String.format("Time elapsed for gyroscope sensor %s", time_g-time_g_p));
                 time_g_p = time_g;
@@ -170,6 +203,43 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 t_g = (time_g-time_g_p / 60000) + 1F;
             }
         }
+    }
+
+    public void createNotification()
+    {
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        Notification notification = null;
+
+        Notification.InboxStyle full_noti = new Notification.InboxStyle()
+                .addLine("Light: "+lil)
+                .addLine("Proximeter: "+proxi)
+                .addLine("Accelerometer: ")
+                .addLine("      "+acce)
+                .addLine("Gyroscope: ")
+                .addLine("      "+gyro)
+                .setBigContentTitle("All the sensor values");
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            notification = new Notification.Builder(this)
+                    .setContentTitle("Sensor values")
+                    .setContentText("Light: "+lil)
+                    .setSmallIcon(R.drawable.linked_in)
+                    .setChannelId(channel_id)
+                    .setStyle(full_noti)
+                    .build();
+            nm.createNotificationChannel(new NotificationChannel(channel_id, "New channel", NotificationManager.IMPORTANCE_HIGH));
+        }
+        else{
+            notification = new Notification.Builder(this)
+                    .setContentText("Sensor values: ")
+                    .setSmallIcon(R.drawable.linked_in)
+                    .setStyle(full_noti)
+                    .setSubText("Hello")
+                    .build();
+        }
+
+        nm.notify(notification_id, notification);
     }
 
 //    public void getDataValues(){

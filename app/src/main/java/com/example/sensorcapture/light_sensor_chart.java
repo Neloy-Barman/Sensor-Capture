@@ -2,26 +2,21 @@ package com.example.sensorcapture;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class light_sensor_chart extends AppCompatActivity implements OnChartValueSelectedListener {
 
@@ -73,20 +68,25 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         // set an alternative background color
         chart.setBackgroundColor(Color.WHITE);
 
-        XAxis xl = chart.getXAxis();
-        xl.setTextColor(Color.rgb(255,0,0));
-        xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
-        xl.setEnabled(true);
+        XAxis x = chart.getXAxis();
+        x.setTextColor(Color.rgb(255,0,0));
+        x.setAvoidFirstLastClipping(true);
+        x.setEnabled(true);
 
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextColor(Color.rgb(0,255,0));
-        leftAxis.setAxisMaximum(100f);
-        leftAxis.setAxisMinimum(0f);
-        leftAxis.setDrawGridLines(true);
-
+        leftAxis.setEnabled(true);
+//        leftAxis.setDrawZeroLine(true);
         YAxis rightAxis = chart.getAxisRight();
-        rightAxis.setEnabled(false);
+        rightAxis.setEnabled(true);
+        leftAxis.setTextColor(Color.rgb(0,255,0));
+        rightAxis.setTextColor(Color.rgb(0,255,0));
+//        leftAxis.setAxisMaximum(100f);
+//        leftAxis.setAxisMinimum(0f);
+
+//        leftAxis.setDrawGridLines(true);
+
+//        YAxis rightAxis = chart.getAxisRight();
+//        rightAxis.setEnabled(false);
         return chart;
     }
 //            entries.add(new Entry(20f, 0.0f));

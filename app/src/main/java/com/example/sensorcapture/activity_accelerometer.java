@@ -109,20 +109,19 @@ public class activity_accelerometer extends AppCompatActivity implements OnChart
         // set an alternative background color
         chart.setBackgroundColor(Color.WHITE);
 
-        XAxis xl = chart.getXAxis();
-        xl.setTextColor(Color.rgb(255,0,0));
-        xl.setDrawGridLines(false);
-        xl.setAvoidFirstLastClipping(true);
-        xl.setEnabled(true);
+        XAxis x = chart.getXAxis();
+        x.setTextColor(Color.rgb(255,0,0));
+        x.setAvoidFirstLastClipping(true);
+        x.setEnabled(true);
 
         YAxis leftAxis = chart.getAxisLeft();
-        leftAxis.setTextColor(Color.rgb(0,255,0));
-        leftAxis.setAxisMaximum(100f);
-        leftAxis.setAxisMinimum(0f);
-        leftAxis.setDrawGridLines(true);
-
+        leftAxis.setEnabled(true);
+//        leftAxis.setDrawZeroLine(true);
         YAxis rightAxis = chart.getAxisRight();
-        rightAxis.setEnabled(false);
+        rightAxis.setEnabled(true);
+        leftAxis.setTextColor(Color.rgb(0,255,0));
+        rightAxis.setTextColor(Color.rgb(0,255,0));
+
         return chart;
     }
 
