@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/acc_lin" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="match_parent" app:layout_constrainedHeight="true" tools:context=".activity_accelerometer">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/acc_lin"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    app:layout_constrainedHeight="true"
+    android:background="#050516"
+    tools:context=".activity_accelerometer">
 
     <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="50dp">
-        <androidx.appcompat.widget.Toolbar android:id="@+id/acc_toolbar" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/purple_700">
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="@dimen/_7sdp" android:text="Accelerometer" android:textColor="@color/cardview_light_background" android:textSize="@dimen/_19sdp" android:textStyle="bold">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/acc_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#114A75">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_7sdp"
+                android:text="Accelerometer values"
+                android:textColor="#C1E7FE"
+                android:textSize="@dimen/_19sdp"
+                android:textStyle="bold">
             </TextView>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -22,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="Time vs X-axis Acceleration"
                 android:textAlignment="center"
+                android:textColor="#C1E7FE"
                 android:textSize="@dimen/_15sdp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -37,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Time vs Y-axis Acceleration"
+                android:textColor="#C1E7FE"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp"
                 android:layout_margin="@dimen/_5sdp">
@@ -51,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Time vs Z-axis Acceleration"
+                android:textColor="#C1E7FE"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp"
                 android:layout_margin="@dimen/_5sdp">

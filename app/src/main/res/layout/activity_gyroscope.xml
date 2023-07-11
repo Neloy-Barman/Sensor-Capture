@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     app:layout_constrainedHeight="true"
+    android:background="#050516"
     tools:context=".activity_gyroscope">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,13 +18,13 @@
             android:id="@+id/gyro_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_700">
+            android:background="#114A75">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/_7sdp"
                 android:text="Gyroscope values"
-                android:textColor="@color/cardview_light_background"
+                android:textColor="#C1E7FE"
                 android:textSize="@dimen/_19sdp"
                 android:textStyle="bold">
             </TextView>
@@ -40,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Time vs X-axis Gyro"
+                android:textColor="#C1E7FE"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
@@ -55,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Time vs Y-axis Gyro"
+                android:textColor="#C1E7FE"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp"
                 android:layout_margin="@dimen/_5sdp">
@@ -69,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Time vs Z-axis Gyro"
+                android:textColor="#C1E7FE"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15sdp"
                 android:layout_margin="@dimen/_5sdp">

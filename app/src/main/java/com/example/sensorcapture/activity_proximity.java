@@ -28,7 +28,7 @@ public class activity_proximity extends AppCompatActivity implements OnChartValu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proximity_senor_chart);
+        setContentView(R.layout.activity_proximity_senor);
 
         chart = (LineChart) findViewById(R.id.get_proximity);
         chart.setOnChartValueSelectedListener(this);
@@ -75,12 +75,12 @@ public class activity_proximity extends AppCompatActivity implements OnChartValu
         chart.setScaleEnabled(false);
         chart.setDrawGridBackground(false);
         chart.setPinchZoom(false);
-        // set an alternative background color
-        chart.setBackgroundColor(Color.WHITE);
 
         XAxis x = chart.getXAxis();
         x.setTextColor(Color.rgb(255,0,0));
-        x.setAvoidFirstLastClipping(true);
+//        x.setAvoidFirstLastClipping(true);
+//        x.setAxisMinimum(5F);
+//        x.setAxisMaximum(100F);
         x.setEnabled(true);
 
         YAxis leftAxis = chart.getAxisLeft();

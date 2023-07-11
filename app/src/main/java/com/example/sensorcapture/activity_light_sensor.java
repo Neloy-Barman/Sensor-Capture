@@ -29,7 +29,7 @@ public class activity_light_sensor extends AppCompatActivity implements OnChartV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_sensor_chart);
+        setContentView(R.layout.activity_light_sensor);
 
         chart = (LineChart) findViewById(R.id.getTheGraph);
         chart.setOnChartValueSelectedListener(this);
@@ -77,12 +77,12 @@ public class activity_light_sensor extends AppCompatActivity implements OnChartV
         chart.setScaleEnabled(false);
         chart.setDrawGridBackground(false);
         chart.setPinchZoom(false);
-        // set an alternative background color
-        chart.setBackgroundColor(Color.WHITE);
 
         XAxis x = chart.getXAxis();
         x.setTextColor(Color.rgb(255,0,0));
-        x.setAvoidFirstLastClipping(true);
+//        x.setAvoidFirstLastClipping(true);
+//        x.setAxisMinimum(5F);
+//        x.setAxisMaximum(100F);
         x.setEnabled(true);
 
         YAxis leftAxis = chart.getAxisLeft();

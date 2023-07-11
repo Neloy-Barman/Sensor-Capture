@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="#050516"
     android:theme="@style/Theme.Design.Light"
     tools:context=".MainActivity">
 
@@ -17,14 +17,14 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_700">
+            android:background="#114A75">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/_7sdp"
                 android:text="Sensors"
                 android:textAlignment="center"
-                android:textColor="@color/cardview_light_background"
+                android:textColor="#C1E7FE"
                 android:textSize="@dimen/_19sdp"
                 android:textStyle="bold">
             </TextView>
@@ -39,7 +39,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="#5CCBF9"
+                card_view:cardBackgroundColor="#4A8BD2"
                 card_view:contentPadding="@dimen/_9sdp"
                 card_view:cardElevation="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -57,7 +57,7 @@
                         android:text="Light Sensor"
                         android:textStyle="bold"
                         android:textSize="@dimen/_13sdp"
-                        android:textColor="@color/purple_700">
+                        android:textColor="#050516">
                     </TextView>
                     <TextView
                         android:layout_width="match_parent"
@@ -65,6 +65,7 @@
                         android:text="Light"
                         android:textAlignment="center"
                         android:textSize="@dimen/_24sdp"
+                        android:textColor="#C1E7FE"
                         android:textStyle="bold"
                         android:id="@+id/light_sensor">
                     </TextView>
@@ -78,7 +79,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="#5CCBF9"
+                card_view:cardBackgroundColor="#4A8BD2"
                 card_view:contentPadding="@dimen/_9sdp"
                 card_view:cardElevation="@dimen/_20sdp"
                 android:layout_margin="@dimen/_10sdp"
@@ -93,12 +94,13 @@
                         android:text="Proximity Sensor"
                         android:textStyle="bold"
                         android:textSize="@dimen/_13sdp"
-                        android:textColor="@color/purple_700">
+                        android:textColor="#050516">
                     </TextView>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Proximity"
+                        android:textColor="#C1E7FE"
                         android:textAlignment="center"
                         android:textSize="@dimen/_24sdp"
                         android:textStyle="bold"
@@ -114,7 +116,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="#5CCBF9"
+                card_view:cardBackgroundColor="#4A8BD2"
                 card_view:contentPadding="@dimen/_9sdp"
                 card_view:cardElevation="@dimen/_20sdp"
                 android:layout_margin="@dimen/_10sdp"
@@ -129,13 +131,14 @@
                         android:text="Accelerometer"
                         android:textStyle="bold"
                         android:textSize="@dimen/_13sdp"
-                        android:textColor="@color/purple_700">
+                        android:textColor="#050516">
                     </TextView>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Accelerometer"
                         android:textAlignment="center"
+                        android:textColor="#C1E7FE"
                         android:textSize="@dimen/_24sdp"
                         android:textStyle="bold"
                         android:id="@+id/accelerometer">
@@ -150,7 +153,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="#5CCBF9"
+                card_view:cardBackgroundColor="#4A8BD2"
                 card_view:contentPadding="@dimen/_9sdp"
                 card_view:cardElevation="@dimen/_20sdp"
                 android:layout_margin="@dimen/_10sdp"
@@ -165,12 +168,13 @@
                         android:text="Gyroscope"
                         android:textStyle="bold"
                         android:textSize="@dimen/_13sdp"
-                        android:textColor="@color/purple_700">
+                        android:textColor="#050516">
                     </TextView>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Gyroscope"
+                        android:textColor="#C1E7FE"
                         android:textAlignment="center"
                         android:textSize="@dimen/_24sdp"
                         android:textStyle="bold"

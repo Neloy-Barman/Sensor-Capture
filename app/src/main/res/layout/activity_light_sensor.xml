@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#050516"
     tools:context=".activity_light_sensor">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -13,13 +14,13 @@
             android:id="@+id/light_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_700">
+            android:background="#114A75">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/_7sdp"
                 android:text="Light Sensor"
-                android:textColor="@color/cardview_light_background"
+                android:textColor="#C1E7FE"
                 android:textSize="@dimen/_19sdp"
                 android:textStyle="bold">
             </TextView>
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Time vs Light Sensivity"
+        android:textColor="#C1E7FE"
         android:textAlignment="center"
         android:textSize="@dimen/_15sdp"
         android:layout_marginHorizontal="@dimen/_5sdp"

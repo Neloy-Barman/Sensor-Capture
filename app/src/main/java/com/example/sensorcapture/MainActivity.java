@@ -60,49 +60,57 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorDB = new SensorDB(this);
         sqLiteDatabase = sensorDB.getWritableDatabase();
 
-        lig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go_to_light_db = new Intent(MainActivity.this, activity_light_sensor.class);
-                go_to_light_db.putParcelableArrayListExtra("Light_table_values", sensorDB.retrieveTable(Queries.light));
-                startActivity(go_to_light_db);
-                finish();
-            }
-        });
+        try{
+            lig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent go_to_light_db = new Intent(MainActivity.this, activity_light_sensor.class);
+                    go_to_light_db.putParcelableArrayListExtra("Light_table_values", sensorDB.retrieveTable(Queries.light));
+                    startActivity(go_to_light_db);
+                    finish();
+                }
+            });
 
-        prox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go_to_prox_db = new Intent(MainActivity.this, activity_proximity.class);
-                go_to_prox_db.putParcelableArrayListExtra("prox_table_values", sensorDB.retrieveTable(Queries.proximity));
-                startActivity(go_to_prox_db);
-                finish();
-            }
-        });
+            prox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent go_to_prox_db = new Intent(MainActivity.this, activity_proximity.class);
+                    go_to_prox_db.putParcelableArrayListExtra("prox_table_values", sensorDB.retrieveTable(Queries.proximity));
+                    startActivity(go_to_prox_db);
+                    finish();
+                }
+            });
 
-        acc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent acc_db = new Intent(MainActivity.this, activity_accelerometer.class);
-                acc_db.putParcelableArrayListExtra("acc_x_table_values", sensorDB.retrieveTable(Queries.acce_x));
-                acc_db.putParcelableArrayListExtra("acc_y_table_values", sensorDB.retrieveTable(Queries.acce_y));
-                acc_db.putParcelableArrayListExtra("acc_z_table_values", sensorDB.retrieveTable(Queries.acce_z));
-                startActivity(acc_db);
-                finish();
-            }
-        });
+            acc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent acc_db = new Intent(MainActivity.this, activity_accelerometer.class);
+                    acc_db.putParcelableArrayListExtra("acc_x_table_values", sensorDB.retrieveTable(Queries.acce_x));
+                    acc_db.putParcelableArrayListExtra("acc_y_table_values", sensorDB.retrieveTable(Queries.acce_y));
+                    acc_db.putParcelableArrayListExtra("acc_z_table_values", sensorDB.retrieveTable(Queries.acce_z));
+                    startActivity(acc_db);
+                    finish();
+                }
+            });
 
-        gyr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gyr_db = new Intent(MainActivity.this, activity_gyroscope.class);
-                gyr_db.putParcelableArrayListExtra("gyr_x_table_values", sensorDB.retrieveTable(Queries.gyro_x));
-                gyr_db.putParcelableArrayListExtra("gyr_y_table_values", sensorDB.retrieveTable(Queries.gyro_y));
-                gyr_db.putParcelableArrayListExtra("gyr_z_table_values", sensorDB.retrieveTable(Queries.gyro_z));
-                startActivity(gyr_db);
-                finish();
-            }
-        });
+            gyr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent gyr_db = new Intent(MainActivity.this, activity_gyroscope.class);
+                    gyr_db.putParcelableArrayListExtra("gyr_x_table_values", sensorDB.retrieveTable(Queries.gyro_x));
+                    gyr_db.putParcelableArrayListExtra("gyr_y_table_values", sensorDB.retrieveTable(Queries.gyro_y));
+                    gyr_db.putParcelableArrayListExtra("gyr_z_table_values", sensorDB.retrieveTable(Queries.gyro_z));
+                    startActivity(gyr_db);
+                    finish();
+                }
+            });
+
+        }catch (NullPointerException e){
+            Toast.makeText(this, "Not available Now.",Toast.LENGTH_SHORT);
+        }catch (IndexOutOfBoundsException e){
+            Toast.makeText(this, "Not available Now.",Toast.LENGTH_SHORT);
+        }
+
 
         startService(new Intent(getApplicationContext(), BG_Service.class));
 
@@ -116,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     long time_a_p = time_a;
     long time_g_p = time_g;
 
-    float min = 1000.00F;
+    float min = 100000.00F;
     float add = 1F;
 
     float t_l = add;
@@ -137,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 Log.d("My time", String.format("Time elapsed for light sensor %s", elapesed_time));
                 time_l_p = time_l;
                 sensorDB.insertData(Queries.light, t_l, event.values[0]);
-                 t_l = (float) ((elapesed_time / min) + add);
+//                t_l = (float) ((elapesed_time / min) + add);
+                t_l = (float) (t_l + add);
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_PROXIMITY)
@@ -150,7 +159,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 Log.d("My time", String.format("Time elapsed for proximity sensor %s", time_p-time_p_p));
                 time_p_p = time_p;
                 sensorDB.insertData(Queries.proximity, t_p, event.values[0]);
-                t_p = (time_p-time_p_p / min) + add;
+//                t_p = (time_p-time_p_p / min) + add;
+                t_p = (float) (t_p + add);
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
@@ -165,7 +175,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 sensorDB.insertData(Queries.acce_x, t_p, event.values[0]);
                 sensorDB.insertData(Queries.acce_y, t_p, event.values[1]);
                 sensorDB.insertData(Queries.acce_z, t_p, event.values[2]);
-                t_a = (time_a-time_a_p / min) + add;
+//                t_a = (time_a-time_a_p / min) + add;
+                t_a = (float) (t_a + add);
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE)
@@ -180,7 +191,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 sensorDB.insertData(Queries.gyro_x, t_g, event.values[0]);
                 sensorDB.insertData(Queries.gyro_y, t_g, event.values[1]);
                 sensorDB.insertData(Queries.gyro_z, t_g, event.values[2]);
-                t_g = (time_g-time_g_p / min) + add;
+//                t_g = (time_g-time_g_p / min) + add;
+                t_g = (float) (t_g + add);
             }
         }
     }

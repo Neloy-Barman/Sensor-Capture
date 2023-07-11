@@ -37,15 +37,6 @@ public class activity_accelerometer extends AppCompatActivity implements OnChart
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accelerometer);
 
-//        Display display = getWindowManager().getDefaultDisplay();
-//        int height = display.getHeight();
-//        int width = display.getWidth();
-//
-//        acc = (LinearLayout) findViewById(R.id.acc_lin);
-//        ViewGroup.LayoutParams params = acc.getLayoutParams();
-//        params.height = height;
-//        params.width = width;
-
         Toolbar toolbar = findViewById(R.id.acc_toolbar);
         AppCompatActivity appCompatActivity = activity_accelerometer.this;
         appCompatActivity.setSupportActionBar(toolbar);
@@ -80,12 +71,6 @@ public class activity_accelerometer extends AppCompatActivity implements OnChart
         data_y = getIntent().getParcelableArrayListExtra("acc_y_table_values");
         data_z = getIntent().getParcelableArrayListExtra("acc_z_table_values");
 
-//        for(int j=0;j<data.size();j++)
-//        {
-//            Log.d("Normal", "I'm running from light_sensor_chart");
-//            String s = String.format("%s", data.get(j));
-//            Log.d("From table", s);
-//        }
 
         ArrayList<Entry> entries = new ArrayList<>();
         ArrayList<Entry> entries_2 = new ArrayList<>();
@@ -123,17 +108,16 @@ public class activity_accelerometer extends AppCompatActivity implements OnChart
         chart.setScaleEnabled(false);
         chart.setDrawGridBackground(false);
         chart.setPinchZoom(false);
-        // set an alternative background color
-        chart.setBackgroundColor(Color.WHITE);
 
         XAxis x = chart.getXAxis();
         x.setTextColor(Color.rgb(255,0,0));
-        x.setAvoidFirstLastClipping(true);
+//        x.setAvoidFirstLastClipping(true);
+//        x.setAxisMinimum(5F);
+//        x.setAxisMaximum(100F);
         x.setEnabled(true);
 
         YAxis leftAxis = chart.getAxisLeft();
         leftAxis.setEnabled(true);
-//        leftAxis.setDrawZeroLine(true);
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setEnabled(true);
         leftAxis.setTextColor(Color.rgb(0,255,0));
