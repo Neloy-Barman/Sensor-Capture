@@ -49,29 +49,29 @@ This is the 1st task of my stepping into a app development internship.
       <li>
          <ul>
            <a>Learning</a>
+           <li>Making app responsive and design a better looking UI.</li>
+           <li>Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.</li>
+           <li>Usage of official documentation more effectively.</li>
+           <li>Debugging skills increased. </li>
          </ul>
       </li>
        <li>
          <ul>
            <a>Challanges</a>
+            <li>Developing a user-friendly UI.</li>
+           <li>Facing errors while creating and reading table data from sqlite.</li>
+           <li>Not able to push data to the chart.</li>
          </ul>
       </li>
     </ul>
   </li>
+  <li>
+    <h4>Send Url</h4>
+    <ul>
+      <li>My mail with the repo url got you here.</li>
+    </ul>
+  </li>
 </ol>
-
-    + Making app responsive and design a better looking UI.
-    + Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.
-    + Usage of official documentation more effectively.
-    + Debugging skills increased. 
- * Challanges:
-    + Developing a user-friendly UI.
-    + Facing errors while creating and reading table data from sqlite.
-    + Not able to push data to the chart. 
-
-<h4>7. Send Url:</h4>
-   * My mail with the repo url got you here.
-
 ### Failed Task -
 <h4>1. Re-implemention:</h4>
    * NDK is a good kit for the perfomance boost in android develeopment developed.
