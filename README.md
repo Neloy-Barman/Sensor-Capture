@@ -47,16 +47,16 @@ This is the 1st task of my stepping into a app development internship.
     <h4>Learning from challanges</h4>
     <ul>
       <li>
-         <ul>
-           <a>Learning</a>
-           <li>Making app responsive and design a better looking UI.</li>
-           <li>Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.</li>
-           <li>Usage of official documentation more effectively.</li>
-           <li>Debugging skills increased. </li>
-         </ul>
+           <h6>Learning</h6>
+           <ul>
+             <li>Making app responsive and design a better looking UI.</li>
+             <li>Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.</li>
+             <li>Usage of official documentation more effectively.</li>
+             <li>Debugging skills increased. </li>
+           </ul>
       </li>
       <li>
-           <a>Challanges</a>
+           <h6>Challanges</h6>
            <ul>
              <li>Developing a user-friendly UI.</li>
              <li>Facing errors while creating and reading table data from sqlite.</li>
@@ -73,7 +73,11 @@ This is the 1st task of my stepping into a app development internship.
   </li>
 </ol>
 <h1>Failed Task</h1>
-<h4>1. Re-implemention:</h4>
-   * NDK is a good kit for the perfomance boost in android develeopment developed.
+<h4>Re-implemention</h4>
+<ul>
+  <li>
+    <a>NDK is a good kit for the perfomance boost in android develeopment developed.
      But a strage error of not getting a package although after getting all the libraries did not let me finish this task.
-     That's why I'm not adding that part here. 
+     That's why I'm not adding that part here. </a>
+  </li>
+</ul>
