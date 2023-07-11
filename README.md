@@ -4,9 +4,11 @@ This is the 1st task of my stepping into a app development internship.
 ## Tasks: -
 ### Completed - 
 <h4>1. Basic app:</h4>
- * Language: Java.
- * Workings: Get value from light, proximity, accelerometer & gyroscope sensors.
- * Viewing: Views the latest values in different card for each ones.
+ <li>
+     <ul>Language: Java.</ul>
+     <ul>Workings: Get value from light, proximity, accelerometer & gyroscope sensors.</ul>
+     <ul>Viewing: Views the latest values in different card for each ones.</ul>
+ </li>
 
 <h4>2. Record data in database:</h4>
  * Insertion: It pushes data in the sqlite db in every 5 minutes.
