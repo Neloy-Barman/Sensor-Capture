@@ -40,7 +40,7 @@ This is the 1st task of my stepping into a app development internship.
   <li>
     <h4>Github repo</h4>
     <ul>
-      <li>I hope you are reading this in my <a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></li>
+      <li>I hope you are reading this in my <b><a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></b></li>
     </ul>
   </li>
   <li>
