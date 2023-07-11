@@ -20,16 +20,24 @@ This is the 1st task of my stepping into a app development internship.
         <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
     </ul>
  </li>
+   <li>
+     <h4>Background task</h4>
+     <ul>
+         <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
+         <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
+         <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
+     </ul>
+ </li>
+    <li>
+     <h4>Creatively made app</h4>
+     <ul>
+         <li>Logo: Particliarly a logo is created.</li>
+         <li>Splash screen: A splash screen with the logo and app name is created for better user experience.</li>
+         <li>Dark theme: A theme with dark colors is maintained for all the available screens.</li>
+        <li>UI responsiveness: Using an implementation, the ui will response to different screen sizes.</li>
+     </ul>
+ </li>
 </ol>
-
-<h4>3. Background task:</h4>
-
-
-<h4>4. Creatively made app:</h4>
- * Logo: Particliarly a logo is created. 
- * Splash screen: A splash screen with the logo and app name is created for better user experience.
- * Dark theme: A theme with dark colors is maintained for all the available screens.
- * UI responsiveness: Using an implementation, the ui will response to different screen sizes.
 
 <h4>5. Github repo:</h4>
  *  I hope you are reading this in my <a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a>.
