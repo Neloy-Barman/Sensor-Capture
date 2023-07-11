@@ -5,7 +5,7 @@ I hope it meets the requirements. Thank you. </strong></p>
 <h2>Screens done</h2>
 |<h2>Splash Screen</h2>|<h2>Home Screen</h2>|<h2>Light Sensor</h2>|
 |----------------------|--------------------|---------------------|
-|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/9a6701df-55fa-4b28-a59f-1afadf67d5e1" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/fa29547c-97e9-4872-b454-57a77c61934f" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/4f4c3d45-fb7e-4054-97a6-cdb6db75c67b" width="280" height="500" />
+|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/9a6701df-55fa-4b28-a59f-1afadf67d5e1" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/fa29547c-97e9-4872-b454-57a77c61934f" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/4f4c3d45-fb7e-4054-97a6-cdb6db75c67b" width="280" height="500" />|
 
 
 <h2>Tasks: -</h2>
