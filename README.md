@@ -23,18 +23,18 @@ This is the 1st task of my stepping into a app development internship.
  * UI responsiveness: Using an implementation, the ui will response to different screen sizes.
     
 5. Github repo:
-   *  I hope you are reading this in my [repo](https://github.com/Neloy-Barman/Sensor-Capture).
+ *  I hope you are reading this in my [repo](https://github.com/Neloy-Barman/Sensor-Capture).
 
 8. Learning from challanges:
-  * Learning:
-     + Making app responsive and design a better looking UI.
-     + Implementaion of some useful classes for android developement such as, Sensor Manager, Service and many more.
-     + Usage of official documentation more effectively.
-     + Debugging skills increased. 
-   * Challanges:
-     + Developing a user-friendly UI.
-     + Facing errors while creating and reading table data from sqlite.
-     + Not able to push data to the chart. 
+ * Learning:
+    + Making app responsive and design a better looking UI.
+    + Implementaion of some useful classes for android developement such as, Sensor Manager, Service and many more.
+    + Usage of official documentation more effectively.
+    + Debugging skills increased. 
+ * Challanges:
+    + Developing a user-friendly UI.
+    + Facing errors while creating and reading table data from sqlite.
+    + Not able to push data to the chart. 
 
 7. Send Url:
    * My mail with the repo url got you here.
