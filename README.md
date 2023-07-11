@@ -65,8 +65,8 @@ I hope it meets the requirements. Thank you. </strong></p>
   <li>
     <h4>Github repo</h4>
     <ul>
-      <li><b>repo:</b> I hope you are reading this in my <b><a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></b>.</li>
-      <li><b>apk:</b> Find it in the apk folde.r</li>
+      <li><b>REPO:</b> I hope you are reading this in my <b><a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></b>.</li>
+      <li><b>APK:</b> Find it in the apk folder.</li>
     </ul>
   </li>
   <li>
