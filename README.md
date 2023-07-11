@@ -9,21 +9,21 @@ This is the 1st task of my stepping into a app development internship.
     <ul>
       <li><b>Language:</b> Java.</li>
       <li><b>Workings:</b> Get value from light, proximity, accelerometer & gyroscope sensors.</li>
-      <li><b>Viewings:</b>Views the latest values in different card for each ones.</li>
+      <li><b>Viewings:</b> Views the latest values in different card for each ones.</li>
     </ul>
   </li>
   <li>
     <h4>Record data in database</h4>
     <ul>
-      <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
-      <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
-      <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
+      <li><b>Insertion:</b> It pushes data in the sqlite db in every 5 minutes.</li>
+      <li><b>Time-series chart:</b> A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
+      <li><b>Navigation:</b> Clicking cards, navigate us to the chart screen of the respective ones.</li>
     </ul>
   </li>
   <li>
     <h4>Background task</h4>
     <ul>
-      <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
+      <li><b>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
       <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
       <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
     </ul>
@@ -31,10 +31,10 @@ This is the 1st task of my stepping into a app development internship.
   <li>
     <h4>Creatively made app</h4>
     <ul>
-      <li>Logo: Particliarly a logo is created.</li>
-      <li>Splash screen: A splash screen with the logo and app name is created for better user experience.</li>
-      <li>Dark theme: A theme with dark colors is maintained for all the available screens.</li>
-      <li>UI responsiveness: Using an implementation, the ui will response to different screen sizes.</li>
+      <li><b>Logo:</b> Particliarly a logo is created.</li>
+      <li><b>Splash screen:</b> A splash screen with the logo and app name is created for better user experience.</li>
+      <li><b>Dark theme:</b> A theme with dark colors is maintained for all the available screens.</li>
+      <li><b>UI responsiveness:</b> Using an implementation, the ui will response to different screen sizes.</li>
     </ul>
   </li>
   <li>
@@ -47,7 +47,7 @@ This is the 1st task of my stepping into a app development internship.
     <h4>Learning from challanges</h4>
     <ul>
       <li>
-           <h6>Learning</h6>
+           <b>Learning</b>
            <ul>
              <li>Making app responsive and design a better looking UI.</li>
              <li>Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.</li>
@@ -56,7 +56,7 @@ This is the 1st task of my stepping into a app development internship.
            </ul>
       </li>
       <li>
-           <h6>Challanges</h6>
+           <b>Challanges</b>
            <ul>
              <li>Developing a user-friendly UI.</li>
              <li>Facing errors while creating and reading table data from sqlite.</li>
