@@ -3,7 +3,7 @@ This is the 1st task of my stepping into a app development internship.
 
 ## Tasks: -
 ### Completed - 
-1. Basic app:
+<h2>1. Basic app:</h2>
  * Language: Java.
  * Workings: Get value from light, proximity, accelerometer & gyroscope sensors.
  * Viewing: Views the latest values in different card for each ones.
