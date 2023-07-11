@@ -4,11 +4,11 @@ This is the 1st task of my stepping into a app development internship.
 ## Tasks: -
 ### Completed - 
 <h4>1. Basic app:</h4>
- <li>
-     <ul>Language: Java.</ul>
-     <ul>Workings: Get value from light, proximity, accelerometer & gyroscope sensors.</ul>
-     <ul>Viewing: Views the latest values in different card for each ones.</ul>
- </li>
+ <ul>
+     <li>Language: Java.</li>
+     <li>Workings: Get value from light, proximity, accelerometer & gyroscope sensors.</li>
+     <li>Viewing: Views the latest values in different card for each ones.</li>
+ </ul>
 
 <h4>2. Record data in database:</h4>
  * Insertion: It pushes data in the sqlite db in every 5 minutes.
@@ -19,7 +19,7 @@ This is the 1st task of my stepping into a app development internship.
  * 
 
 <h4>4. Creatively made app:</h4>
- * Logo: Particularly a logo is created. 
+ * Logo: Particliarly a logo is created. 
  * Splash screen: A splash screen with the logo and app name is created for better user experience.
  * Dark theme: A theme with dark colors is maintained for all the available screens.
  * UI responsiveness: Using an implementation, the ui will response to different screen sizes.
@@ -30,7 +30,7 @@ This is the 1st task of my stepping into a app development internship.
 <h4>8. Learning from challanges:</h4>
  * Learning:
     + Making app responsive and design a better looking UI.
-    + Implementaion of some useful classes for android developement such as, Sensor Manager, Service and many more.
+    + Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.
     + Usage of official documentation more effectively.
     + Debugging skills increased. 
  * Challanges:
