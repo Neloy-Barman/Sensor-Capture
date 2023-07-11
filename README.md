@@ -2,9 +2,31 @@
 <p><strong>This is the 1st task of my stepping into a app development internship.
 I hope it meets the requirements. Thank you. </strong></p>
 <h2>Screens done</h2>
-|<h2>Splash Screen</h2>|<h2>Home Screen</h2>|<h2>Light Sensor</h2>|
-|----------------------|--------------------|---------------------|
-|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/9a6701df-55fa-4b28-a59f-1afadf67d5e1" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/fa29547c-97e9-4872-b454-57a77c61934f" width="280" height="500" />|<img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/4f4c3d45-fb7e-4054-97a6-cdb6db75c67b" width="280" height="500" />|
+<table>
+  <tbody>
+    <tr>
+      <th>Splash Screen</th>
+      <th>Home Screen</th>
+      <th>Light Sensor</th>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/9a6701df-55fa-4b28-a59f-1afadf67d5e1" width="280" height="500" /></td>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/fa29547c-97e9-4872-b454-57a77c61934f" width="280" height="500" /></td>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/4f4c3d45-fb7e-4054-97a6-cdb6db75c67b" width="280" height="500" /></td>
+    </tr>
+    <tr>
+      <th>X-axis Gyroscope value</th>
+      <th>Notification</th>
+      <th>Extended notification</th>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/c4f79d3a-3c18-4c57-9083-ba7c73d7a0ba" width="280" height="500" /></td>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/e3fd5be4-dae8-4453-879d-936db1a81a71" width="280" height="500" /></td>
+      <td><img src="https://github.com/Neloy-Barman/Sensor-Capture/assets/110896263/c7633ee9-896b-460b-a155-01fa0f007562" width="280" height="500" /></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Tasks: -</h2>
 <h3>Completed -</h3> 
 <ol>
@@ -43,7 +65,8 @@ I hope it meets the requirements. Thank you. </strong></p>
   <li>
     <h4>Github repo</h4>
     <ul>
-      <li>I hope you are reading this in my <b><a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></b></li>
+      <li><b>repo:</b> I hope you are reading this in my <b><a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></b>.</li>
+      <li><b>apk:</b> Find it in the apk folde.r</li>
     </ul>
   </li>
   <li>
