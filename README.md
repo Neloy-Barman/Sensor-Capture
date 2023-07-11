@@ -20,4 +20,4 @@ This is the 1st task of my stepping into a app development internship.
    * UI responsiveness: Using an implementation, the ui will response to different screen sizes.
 
 5. Github repo:
-   *  I hope you are reading this in the repo. 
+   *  I hope you are reading this in the <href repo>. 
