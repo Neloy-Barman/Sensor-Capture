@@ -7,9 +7,9 @@ This is the 1st task of my stepping into a app development internship.
   <li>
     <h4>Basic app</h4>
     <ul>
-      <li>Language: Java.</li>
-      <li>Workings: Get value from light, proximity, accelerometer & gyroscope sensors.</li>
-      <li>Viewing: Views the latest values in different card for each ones.</li>
+      <li><b>Language:</b> Java.</li>
+      <li><b>Workings:</b> Get value from light, proximity, accelerometer & gyroscope sensors.</li>
+      <li><b>Viewings:</b>Views the latest values in different card for each ones.</li>
     </ul>
   </li>
   <li>
