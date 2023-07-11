@@ -5,20 +5,23 @@ This is the 1st task of my stepping into a app development internship.
 ### Completed - 
 <ol>
  <li>
-    <h4>1. Basic app:</h4>
+    <h4>Basic app</h4>
     <ul>
         <li>Language: Java.</li>
         <li>Workings: Get value from light, proximity, accelerometer & gyroscope sensors.</li>
         <li>Viewing: Views the latest values in different card for each ones.</li>
     </ul>
  </li>
+  <li>
+    <h4>Record data in database</h4>
+    <ul>
+        <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
+        <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
+        <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
+    </ul>
+ </li>
 </ol>
-<h4>2. Record data in database:</h4>
-<ul>
- <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
- <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
- <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
-</ul>
+
 <h4>3. Background task:</h4>
 
 
