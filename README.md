@@ -55,13 +55,13 @@ This is the 1st task of my stepping into a app development internship.
            <li>Debugging skills increased. </li>
          </ul>
       </li>
-       <li>
-         <ul>
+      <li>
            <a>Challanges</a>
-            <li>Developing a user-friendly UI.</li>
-           <li>Facing errors while creating and reading table data from sqlite.</li>
-           <li>Not able to push data to the chart.</li>
-         </ul>
+           <ul>
+             <li>Developing a user-friendly UI.</li>
+             <li>Facing errors while creating and reading table data from sqlite.</li>
+             <li>Not able to push data to the chart.</li>
+           </ul>
       </li>
     </ul>
   </li>
@@ -72,7 +72,7 @@ This is the 1st task of my stepping into a app development internship.
     </ul>
   </li>
 </ol>
-### Failed Task -
+<h1>Failed Task</h1>
 <h4>1. Re-implemention:</h4>
    * NDK is a good kit for the perfomance boost in android develeopment developed.
      But a strage error of not getting a package although after getting all the libraries did not let me finish this task.
