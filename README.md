@@ -23,7 +23,7 @@ This is the 1st task of my stepping into a app development internship.
   <li>
     <h4>Background task</h4>
     <ul>
-      <li><b>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
+      <li>Insertion: It pushes data in the sqlite db in every 5 minutes.</li>
       <li>Time-series chart: A chart with time at X-axis and value with Y-axis is created retreiving data from the database.</li>
       <li>Navigation: Clicking cards, navigate us to the chart screen of the respective ones.</li>
     </ul>
