@@ -23,7 +23,7 @@ This is the 1st task of my stepping into a app development internship.
  * UI responsiveness: Using an implementation, the ui will response to different screen sizes.
 
 <h4>5. Github repo:</h4>
- *  I hope you are reading this in my [repo](https://github.com/Neloy-Barman/Sensor-Capture).
+ *  I hope you are reading this in my <a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a>.
 
 <h4>8. Learning from challanges:</h4>
  * Learning:
