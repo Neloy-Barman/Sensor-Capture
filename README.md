@@ -2,7 +2,7 @@
 This is the 1st task of my stepping into a app development internship.
 
 ## Tasks: -
-### Completed - 
+<h3>Completed -</h3> 
 <ol>
   <li>
     <h4>Basic app</h4>
@@ -72,7 +72,8 @@ This is the 1st task of my stepping into a app development internship.
     </ul>
   </li>
 </ol>
-<h1>Failed Task</h1>
+
+<h3>Failed Task -</h3>
 <h4>Re-implemention</h4>
 <ul>
   <li>
