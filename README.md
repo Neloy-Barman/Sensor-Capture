@@ -43,10 +43,23 @@ This is the 1st task of my stepping into a app development internship.
       <li>I hope you are reading this in my <a href="https://github.com/Neloy-Barman/Sensor-Capture">repo</a></li>
     </ul>
   </li>
+  <li>
+    <h4>Learning from challanges</h4>
+    <ul>
+      <li>
+         <ul>
+           <a>Learning</a>
+         </ul>
+      </li>
+       <li>
+         <ul>
+           <a>Challanges</a>
+         </ul>
+      </li>
+    </ul>
+  </li>
 </ol>
 
-<h4>8. Learning from challanges:</h4>
- * Learning:
     + Making app responsive and design a better looking UI.
     + Implementaion of some usefli classes for android developement such as, Sensor Manager, Service and many more.
     + Usage of official documentation more effectively.
