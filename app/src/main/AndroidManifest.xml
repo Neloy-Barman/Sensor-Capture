@@ -9,33 +9,36 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/launcher_icon"
+        android:label="Sensor Capture"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:targetApi="31">
+        <service
+            android:name=".BG_Service"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".activity_gyroscope"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".activity_accelerometer"
-            android:exported="false"
-           />
+            android:exported="false" />
         <activity
-            android:name=".activity_proximity_senor_chart"
-            android:exported="false"
-            />
+            android:name=".activity_proximity"
+            android:exported="false" />
         <activity
-            android:name=".light_sensor_chart"
-            android:exported="false"
-            />
+            android:name=".activity_light_sensor"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpalshActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

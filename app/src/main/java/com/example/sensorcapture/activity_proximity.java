@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -21,7 +20,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class light_sensor_chart extends AppCompatActivity implements OnChartValueSelectedListener {
+public class activity_proximity extends AppCompatActivity implements OnChartValueSelectedListener {
 
     private LineChart chart;
     SensorDB sensorDB;
@@ -29,14 +28,14 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_sensor_chart);
+        setContentView(R.layout.activity_proximity_senor_chart);
 
-        chart = (LineChart) findViewById(R.id.getTheGraph);
+        chart = (LineChart) findViewById(R.id.get_proximity);
         chart.setOnChartValueSelectedListener(this);
         chart = setparams(chart);
 
-        Toolbar toolbar = findViewById(R.id.light_toolbar);
-        AppCompatActivity appCompatActivity = light_sensor_chart.this;
+        Toolbar toolbar = findViewById(R.id.prox_toolbar);
+        AppCompatActivity appCompatActivity = activity_proximity.this;
         appCompatActivity.setSupportActionBar(toolbar);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -44,7 +43,7 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(light_sensor_chart.this, MainActivity.class);
+                Intent main = new Intent(activity_proximity.this, MainActivity.class);
                 startActivity(main);
                 finish();
             }
@@ -52,7 +51,7 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
 
 
         ArrayList<Entry> data = new ArrayList<Entry>();
-        data = getIntent().getParcelableArrayListExtra("Light_table_values");
+        data = getIntent().getParcelableArrayListExtra("prox_table_values");
         ArrayList<Entry> entries = new ArrayList<>();
         for(int i=0;i<data.size();i++)
         {
@@ -62,7 +61,6 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         LineDataSet dataSet= new LineDataSet(entries, "Time series");
         LineData chart_data = new LineData(dataSet);
         chart.setData(chart_data);
-
     }
 
     public LineChart setparams(LineChart chart)
@@ -72,7 +70,7 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         chart.setHighlightPerTapEnabled(false);
         // disable touch gestures
         chart.setTouchEnabled(false);
-       // disable scaling and dragging
+        // disable scaling and dragging
         chart.setDragEnabled(false);
         chart.setScaleEnabled(false);
         chart.setDrawGridBackground(false);
@@ -96,14 +94,13 @@ public class light_sensor_chart extends AppCompatActivity implements OnChartValu
         return chart;
     }
 
-
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        Log.i("Entry selected", e.toString());
+
     }
 
     @Override
     public void onNothingSelected() {
-        Log.i("Nothing selected", "Nothing selected.");
+
     }
 }

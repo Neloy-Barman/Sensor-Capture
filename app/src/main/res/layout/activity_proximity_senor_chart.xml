@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity_proximity_senor_chart">
+    tools:context=".activity_proximity">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="@dimen/_40sdp">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/prox_toolbar"
             android:layout_width="match_parent"
@@ -17,25 +17,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="6dp"
-                android:text="Proximity sensor"
-                android:textAlignment="textStart"
+                android:padding="@dimen/_7sdp"
+                android:text="Proximeter"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="25sp"
+                android:textSize="@dimen/_19sdp"
                 android:textStyle="bold">
             </TextView>
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time vs Proximity"
+        android:textAlignment="center"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
+    </TextView>
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/get_proximity"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="@dimen/_500sdp"
+        android:layout_marginTop="@dimen/_10sdp">
     </com.github.mikephil.charting.charts.LineChart>
 </LinearLayout>

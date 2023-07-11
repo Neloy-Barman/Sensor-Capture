@@ -3,21 +3,16 @@ package com.example.sensorcapture;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         lig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_to_light_db = new Intent(MainActivity.this, light_sensor_chart.class);
+                Intent go_to_light_db = new Intent(MainActivity.this, activity_light_sensor.class);
                 go_to_light_db.putParcelableArrayListExtra("Light_table_values", sensorDB.retrieveTable(Queries.light));
                 startActivity(go_to_light_db);
                 finish();
@@ -78,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         prox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_to_prox_db = new Intent(MainActivity.this, activity_proximity_senor_chart.class);
+                Intent go_to_prox_db = new Intent(MainActivity.this, activity_proximity.class);
                 go_to_prox_db.putParcelableArrayListExtra("prox_table_values", sensorDB.retrieveTable(Queries.proximity));
                 startActivity(go_to_prox_db);
                 finish();
@@ -108,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 finish();
             }
         });
+
+        startService(new Intent(getApplicationContext(), BG_Service.class));
+
     }
     long time_l = System.currentTimeMillis();
     long time_p = System.currentTimeMillis();
@@ -117,10 +115,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     long time_p_p = time_p;
     long time_a_p = time_a;
     long time_g_p = time_g;
-    float t_l = 1F;
-    float t_p = 1F;
-    float t_a = 1F;
-    float t_g = 1F;
+
+    float min = 1000.00F;
+    float add = 1F;
+
+    float t_l = add;
+    float t_p = add;
+    float t_a = add;
+    float t_g = add;
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_LIGHT)
@@ -130,12 +133,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             createNotification();
             time_l = System.currentTimeMillis();
             long elapesed_time = time_l-time_l_p;
-            if(elapesed_time >= 60000.00){
+            if(elapesed_time >= min){
                 Log.d("My time", String.format("Time elapsed for light sensor %s", elapesed_time));
                 time_l_p = time_l;
                 sensorDB.insertData(Queries.light, t_l, event.values[0]);
-                 t_l = (float) ((elapesed_time / 60000.00) + 1F);
-//                getDataValues();
+                 t_l = (float) ((elapesed_time / min) + add);
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_PROXIMITY)
@@ -144,11 +146,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             proxi =  ((TextView)findViewById(R.id.proximity_sensor)).getText().toString();
             createNotification();
             time_p = System.currentTimeMillis();
-            if(time_p-time_p_p >= 60000){
+            if(time_p-time_p_p >= min){
                 Log.d("My time", String.format("Time elapsed for proximity sensor %s", time_p-time_p_p));
                 time_p_p = time_p;
                 sensorDB.insertData(Queries.proximity, t_p, event.values[0]);
-                t_p = (time_p-time_p_p / 60000) + 1F;
+                t_p = (time_p-time_p_p / min) + add;
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
@@ -157,13 +159,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             time_a = System.currentTimeMillis();
             acce = ((TextView)findViewById((R.id.accelerometer))).getText().toString();
             createNotification();
-            if(time_a-time_a_p >= 60000){
+            if(time_a-time_a_p >= min){
                 Log.d("My time", String.format("Time elapsed for accelerometer  %s", time_a-time_a_p));
                 time_a_p = time_a;
                 sensorDB.insertData(Queries.acce_x, t_p, event.values[0]);
                 sensorDB.insertData(Queries.acce_y, t_p, event.values[1]);
                 sensorDB.insertData(Queries.acce_z, t_p, event.values[2]);
-                t_a = (time_a-time_a_p / 60000) + 1F;
+                t_a = (time_a-time_a_p / min) + add;
             }
         }
         if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE)
@@ -172,13 +174,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             time_g = System.currentTimeMillis();
             gyro = ((TextView)findViewById(R.id.gyroscope)).getText().toString();
             createNotification();
-            if(time_g-time_g_p >= 60000){
+            if(time_g-time_g_p >= min){
                 Log.d("My time", String.format("Time elapsed for gyroscope sensor %s", time_g-time_g_p));
                 time_g_p = time_g;
                 sensorDB.insertData(Queries.gyro_x, t_g, event.values[0]);
                 sensorDB.insertData(Queries.gyro_y, t_g, event.values[1]);
                 sensorDB.insertData(Queries.gyro_z, t_g, event.values[2]);
-                t_g = (time_g-time_g_p / 60000) + 1F;
+                t_g = (time_g-time_g_p / min) + add;
             }
         }
     }
@@ -200,20 +202,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             notification = new Notification.Builder(this)
-                    .setContentTitle("Sensor values")
-                    .setContentText("Light: "+lil)
-                    .setSmallIcon(R.drawable.linked_in)
+                    .setContentTitle("Gyroscope: "+gyro)
+                    .setContentText("")
+                    .setSmallIcon(R.mipmap.launcher_icon)
+
                     .setChannelId(channel_id)
                     .setStyle(full_noti)
+                    .setAutoCancel(false)
                     .build();
             nm.createNotificationChannel(new NotificationChannel(channel_id, "New channel", NotificationManager.IMPORTANCE_DEFAULT));
         }
         else{
             notification = new Notification.Builder(this)
-                    .setContentText("Sensor values: ")
-                    .setSmallIcon(R.drawable.linked_in)
+                    .setContentTitle("Gyroscope: "+gyro)
+                    .setContentText("")
+                    .setSmallIcon(R.mipmap.launcher_icon)
                     .setStyle(full_noti)
-                    .setSubText("Hello")
+                    .setAutoCancel(false)
                     .build();
         }
 

@@ -12,7 +12,7 @@
     tools:context=".activity_gyroscope">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="@dimen/_40sdp">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/gyro_toolbar"
             android:layout_width="match_parent"
@@ -21,11 +21,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="6dp"
+                android:padding="@dimen/_7sdp"
                 android:text="Gyroscope values"
-                android:textAlignment="textStart"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="25sp"
+                android:textSize="@dimen/_19sdp"
                 android:textStyle="bold">
             </TextView>
         </androidx.appcompat.widget.Toolbar>
@@ -40,41 +39,45 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Time vs gyroscope of X axis"
+                android:text="Time vs X-axis Gyro"
                 android:textAlignment="center"
-                android:textSize="15sp">
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp">
             </TextView>
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/gy_x"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="10dp">
+                android:layout_height="@dimen/_500sdp"
+                android:layout_marginTop="@dimen/_10sdp">
             </com.github.mikephil.charting.charts.LineChart>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Time vs gyroscope of Y axis"
+                android:text="Time vs Y-axis Gyro"
                 android:textAlignment="center"
-                android:textSize="15sp">
+                android:textSize="@dimen/_15sdp"
+                android:layout_margin="@dimen/_5sdp">
             </TextView>
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/gy_y"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="10dp">
+                android:layout_height="@dimen/_500sdp"
+                android:layout_marginTop="@dimen/_10sdp">
             </com.github.mikephil.charting.charts.LineChart>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Time vs gyroscope of Z axis"
+                android:text="Time vs Z-axis Gyro"
                 android:textAlignment="center"
-                android:textSize="15sp">
+                android:textSize="@dimen/_15sdp"
+                android:layout_margin="@dimen/_5sdp">
             </TextView>
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/gy_z"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="10dp">
+                android:layout_height="@dimen/_500sdp"
+                android:layout_marginTop="@dimen/_10sdp">
             </com.github.mikephil.charting.charts.LineChart>
         </LinearLayout>
     </ScrollView>

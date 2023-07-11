@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.NumberPicker;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,7 +21,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
-public class activity_proximity_senor_chart extends AppCompatActivity implements OnChartValueSelectedListener {
+public class activity_light_sensor extends AppCompatActivity implements OnChartValueSelectedListener {
 
     private LineChart chart;
     SensorDB sensorDB;
@@ -29,14 +29,14 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_proximity_senor_chart);
+        setContentView(R.layout.activity_light_sensor_chart);
 
-        chart = (LineChart) findViewById(R.id.get_proximity);
+        chart = (LineChart) findViewById(R.id.getTheGraph);
         chart.setOnChartValueSelectedListener(this);
         chart = setparams(chart);
 
-        Toolbar toolbar = findViewById(R.id.prox_toolbar);
-        AppCompatActivity appCompatActivity = activity_proximity_senor_chart.this;
+        Toolbar toolbar = findViewById(R.id.light_toolbar);
+        AppCompatActivity appCompatActivity = activity_light_sensor.this;
         appCompatActivity.setSupportActionBar(toolbar);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appCompatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -44,7 +44,7 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(activity_proximity_senor_chart.this, MainActivity.class);
+                Intent main = new Intent(activity_light_sensor.this, MainActivity.class);
                 startActivity(main);
                 finish();
             }
@@ -52,7 +52,7 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
 
 
         ArrayList<Entry> data = new ArrayList<Entry>();
-        data = getIntent().getParcelableArrayListExtra("prox_table_values");
+        data = getIntent().getParcelableArrayListExtra("Light_table_values");
         ArrayList<Entry> entries = new ArrayList<>();
         for(int i=0;i<data.size();i++)
         {
@@ -62,6 +62,7 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
         LineDataSet dataSet= new LineDataSet(entries, "Time series");
         LineData chart_data = new LineData(dataSet);
         chart.setData(chart_data);
+
     }
 
     public LineChart setparams(LineChart chart)
@@ -71,7 +72,7 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
         chart.setHighlightPerTapEnabled(false);
         // disable touch gestures
         chart.setTouchEnabled(false);
-        // disable scaling and dragging
+       // disable scaling and dragging
         chart.setDragEnabled(false);
         chart.setScaleEnabled(false);
         chart.setDrawGridBackground(false);
@@ -95,13 +96,14 @@ public class activity_proximity_senor_chart extends AppCompatActivity implements
         return chart;
     }
 
+
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
+        Log.i("Entry selected", e.toString());
     }
 
     @Override
     public void onNothingSelected() {
-
+        Log.i("Nothing selected", "Nothing selected.");
     }
 }
