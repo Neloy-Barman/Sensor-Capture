@@ -1,8 +1,7 @@
-# Sensor-Capture
-This is the 1st task of my stepping into a app development internship.
-I hope it meets the requirements. Thank you. 
-
-## Tasks: -
+<h1>Sensor-Capture</h1>
+<p><strong>This is the 1st task of my stepping into a app development internship.
+I hope it meets the requirements. Thank you. </strong></p>
+<h2>Tasks: -</h2>
 <h3>Completed -</h3> 
 <ol>
   <li>
